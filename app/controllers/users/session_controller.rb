@@ -9,7 +9,7 @@ class Users::SessionController < UsersController
             @user.touch :updated_at
             render json: {message: "Login successfully completed"}, status: :ok
         else
-            render json: {error: "Unauthorized user"}, status: :unauthorized
+            render json: {error: "Invalid Email or Password"}, status: :unauthorized
         end
     end
 

@@ -15,7 +15,7 @@ class PasswordForm
 
     def verify_original_password
         unless @user.authenticate_password(self.original_password)
-            errors.add :original_password, "is not correct"
+            errors.add :original_password, "is not correct" unless errors.include? :original_password
         end
     end
 
@@ -24,13 +24,13 @@ class PasswordForm
     end
 
     def submit(params)
-        self.original_password = params[:original_password]
-        self.new_password = params[:new_password]
-        self.new_password_confirmation = params[:new_password_confirmation]
-        if valid?
-            true
-        else
-            false
-        end
+      self.original_password = params[:original_password]
+      self.new_password = params[:new_password]
+      self.new_password_confirmation = params[:new_password_confirmation]
+      if valid?
+          true
+      else
+          false
+      end
     end
 end

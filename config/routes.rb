@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     post 'signup', to: 'registration#create'
     delete 'cancel', to: 'registration#destroy'
+
+    patch 'update_password', to: 'password#update'
   end
 
   # root "articles#index"
