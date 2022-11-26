@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::API
 
-
-
-
   protected
     def login(user)
         session[:user_id] = user.id
@@ -13,14 +10,14 @@ class ApplicationController < ActionController::API
     end
 
   def authenticate_user
-        unless current_user
-            redirect_to root_path, error: "User not authorized" # ,status: :unprocessable_entity
-        end
+    unless current_user
+        render json: {error: "User not authorized"}, status: :unauthorized
     end
+  end
 
     def current_user
-        if session[:user_id]
-            @current_user ||= User.find_by(id: session[:user_id])
-        end
+      if session[:user_id]
+          @current_user ||= User.find_by(id: session[:user_id])
+      end
     end
 end

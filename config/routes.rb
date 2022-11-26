@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  namespace :users do
-    get 'password/create'
-    get 'password/update'
-    get 'password/destroy'
-    get 'registration/create'
-    get 'registration/destroy'
-    get 'session/create'
-    get 'session/destroy'
-  end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
+  namespace :users do
+    post 'signin', to: 'session#create'
+    delete 'signout', to: 'session#destroy'
+
+    post 'signup', to: 'registration#create'
+    delete 'cancel', to: 'registration#destroy'
+  end
+
   # root "articles#index"
 end
