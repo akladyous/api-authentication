@@ -1,8 +1,5 @@
-class Users::PasswordController < UsersController
+class Users::EditPasswordController < UsersController
   before_action :authenticate_user
-
-  def create
-  end
 
   def update
     @password_form = PasswordForm.new(current_user)
@@ -13,9 +10,6 @@ class Users::PasswordController < UsersController
     else
       render json: {error: @password_form.errors.uniq.to_sentence}, status: :unprocessable_entity
     end
-  end
-
-  def destroy
   end
 
   private

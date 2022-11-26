@@ -74,4 +74,7 @@ Rails.application.configure do
   enable_starttls_auto: true,
   open_timeout:         5,
   read_timeout:         5 }
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000", port: 3000 }
+
 end
